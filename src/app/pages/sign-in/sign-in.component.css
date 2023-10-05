@@ -2,8 +2,14 @@
   width: max-content;
   margin: auto;
   margin-bottom: 2rem;
+    height: min-content;
 }
 
 :host ::ng-deep .p-card .p-card-body .p-card-content {
   width: min-content;
+}
+
+:host ::ng-deep .p-password.p-inputwrapper .p-password-panel{
+  top: 3rem;
+  z-index: 1;
 }
