@@ -1,0 +1,35 @@
+<app-nav-bar title="Shuffle">
+  <div class="p-toolbar-group-center flex gap-1">
+      <label for="seed">Seed:</label>
+      <p-inputNumber inputId="seed" [(ngModel)]="seed"></p-inputNumber>
+      <p-button styleClass="p-button-link" ariaLabel="generate" (onClick)="generate()">
+        <fa-icon size="xl" [icon]="faArrows"></fa-icon>
+      </p-button>
+  </div>
+</app-nav-bar>
+
+<p-table [value]="artworks" >
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Date</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-artwork>
+    <tr>
+      <td>{{ artwork.id }}</td>
+      <td class="p-0 md:p-1 xl:p-2"><img fill class="w-6 md:w-4 xl:w-2"
+              [imagePlaceholder]="artwork.thumbnail?.lqip"
+              loading="lazy"
+              [src]="'https://www.artic.edu/iiif/2/'+artwork.image_id+'/full/843,/0/default.jpg'"
+              [alt]="artwork.thumbnail?.alt_text || artwork.title"/>
+        </td>
+      <td>{{ artwork.title }}</td>
+      <td>{{ artwork.artist_title }}</td>
+      <td>{{ artwork.date_display }}</td>
+    </tr>
+  </ng-template>
+</p-table>

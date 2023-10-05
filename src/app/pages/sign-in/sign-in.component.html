@@ -1,0 +1,45 @@
+<div class="w-full h-screen flex flex-column justify-content-center text-center">
+  <div *ngIf="!authService.isLoggedIn; else elseBlock" class="formGroup">
+    <p-card class="w-max">
+      <form class="card w-max mx-auto flex flex-column py-8 px-16 gap-1 text-left">
+        <label for="email">Email</label>
+        <input id="email" name="email" required class="w-full mx-auto" type="email" pInputText [(ngModel)]="email" placeholder="Email" />
+        <label for="password">Password</label>
+        <p-password id="password" name="password" required [(ngModel)]="password" [toggleMask]="true" placeholder="Password"></p-password>
+        <p-button (click)="emailSignUp()" class="w-full pt-4 pb-2" styleClass="w-full p-button-outlined">
+          <fa-icon [icon]="faUserPlus" class="mr-4"></fa-icon>
+          Sign up
+        </p-button>
+        <p-button type="submit" (click)="emailSignIn()" styleClass="w-full">
+          <fa-icon [icon]="faEmail" class="mr-4"></fa-icon>
+          Continue with Email
+        </p-button>
+      </form>
+      <p-divider></p-divider>
+      <p-button type="submit" (click)="authService.GoogleAuth()" class="w-full p-2">
+        <fa-icon [icon]="faGooglePlusG" class="mr-2"></fa-icon>
+        Continue with Google
+      </p-button>
+    </p-card>
+  </div>
+  <ng-template #elseBlock>
+    <div class="flex flex-column justify-content-center gap-4">
+      <a href="/home">
+        <p-button type="button">
+          <fa-icon [icon]="faBuildingColumns" class="mr-4"></fa-icon>
+          Home
+        </p-button>
+      </a>
+      <a href="/shuffle">
+        <p-button type="button">
+          <fa-icon [icon]="faShuffle" class="mr-4"></fa-icon>
+          Shuffle
+        </p-button>
+      </a>
+      <p-button type="button" (click)="authService.SignOut()">
+        <fa-icon [icon]="faArrowRigthFromBracket" class="mr-4"></fa-icon>
+        Sign Out
+      </p-button>
+    </div>
+  </ng-template>
+</div>

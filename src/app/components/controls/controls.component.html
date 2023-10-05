@@ -1,0 +1,3 @@
+<div class="flex justify-content-center">
+  <p-paginator #pg (onPageChange)="onPageChange($event)" [first]="first" [rows]="12" [totalRecords]="(total | async)||0"></p-paginator>
+</div>

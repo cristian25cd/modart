@@ -1,0 +1,12 @@
+<div class="card flex flex-wrap justify-content-center gap-3">
+  <span class="p-input-icon-left">
+    <i [class]="isLoading ? 'pi pi-spin pi-spinner' : 'pi pi-search'"></i>
+    <input type="text" pInputText [(ngModel)]="value" placeholder="Search Artworks" (keyup.enter)="onSearch" />
+    <p-button *ngIf="(isSearch|async)" styleClass="p-button-link" (onClick)="onReset()">
+      <fa-icon [icon]="faReload" />
+    </p-button>
+    <p-button *ngIf="!(isSearch|async)" styleClass="p-button-link" (onClick)="onSearch()">
+      <fa-icon [icon]="faSearch" />
+    </p-button>
+  </span>
+</div>

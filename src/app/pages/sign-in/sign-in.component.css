@@ -1,0 +1,9 @@
+:host ::ng-deep .p-card {
+  width: max-content;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+:host ::ng-deep .p-card .p-card-body .p-card-content {
+  width: min-content;
+}

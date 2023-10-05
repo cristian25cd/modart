@@ -1,0 +1,34 @@
+<app-nav-bar title="Home">
+  <div class="p-toolbar-group-center">
+    <app-search-bar></app-search-bar>
+  </div>
+</app-nav-bar>
+<p-dataView [value]="(artworks | async)||[]" layout="grid" styleClass="p-8 gap-4">
+  <ng-template let-artwork pTemplate="gridItem">
+    <p-card styleClass="h-full" class="col m-2">
+      <div class="flex flex-column xl:flex-row gap-4 justify-content-between h-full">
+        <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block m-auto border-round"
+          fill
+          [imagePlaceholder]="artwork.thumbnail?.lqip"
+          loading="lazy"
+          [src]="'https://www.artic.edu/iiif/2/'+artwork.image_id+'/full/843,/0/default.jpg'"
+          [alt]="artwork.thumbnail?.alt_text || artwork.title"
+          />
+        <div
+          class="flex flex-column flex-grow-none sm:flex-row justify-content-between align-items-center xl:align-items-start gap-4">
+          <div class="flex flex-column align-items-center sm:align-items-start gap-3">
+            <div class="text-2xl font-bold text-900">{{ artwork.title }}</div>
+            <div class="flex align-items-center gap-3">
+              <span class="flex align-items-center gap-2">
+                <i class="pi pi-tag"></i>
+                <span class="font-semibold">{{ artwork.artist_title }}</span>
+                <span class="font-semibold">{{ artwork.date_display }}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-card>
+  </ng-template>
+</p-dataView>
+<app-controls></app-controls>
